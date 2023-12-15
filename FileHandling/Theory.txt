@@ -1,0 +1,73 @@
+Java File class is Java's representation of a directory pathname.
+Because file and directory names have different formats on different platforms.
+Java File class contans several methods with the pathname, deletng and renaming files,
+creating new drectories, listing the contents of a directory, and determining
+several common attributes of files and directories.
+
+How to creat a File object?
+----------------------------
+A Fle object is created by passing a string that represents the name of a file, a String,
+or another File object. For example,
+File a=new File("usr/local/bin/sanjay");
+the file mentioned in the constructor is absolute abstract file name.
+
+There are 4 types of constructors in the File class
+
+1)File(File parent, String child): Creates a new File instance fro a parent 
+    abstract pathname and a child pathname string.
+2)File(String pathname): Creates a new File instance by converting the given 
+    pathname string into an abstract pathname.
+3)File(String parent, String child): Creates a new File instance from a parent
+    pathname string and a child pathname string.
+4)File(URI uri): Creates a new File instance by converting the given file:
+    URI into an abstract pathname.
+
+Ways to reading a txt file in Java
+----------------------------------
+There are several ways to read a plain text file in Java
+1)Using BufferReader class: BufferReader in =new BufferReader(Reader in,int size);
+
+2)Using FileReader class: FileReader(File file), FileReader(FileDescriptor fd), FileReader(String fileName)
+
+3)Using Scanner class: A simple text scanner that can parse primitive types and strings using
+                       Regular expressions. A Scanner breaks its input into tokens using a delimiter,
+                       pattern, which by default matches whitespace. The resulting tokens may then be
+                       converted into values of different types using the various next methods.
+
+
+4)Reading the whole file in a List: Read all lines from a file. This method ensures that the file is closed
+                                    when all bytes have been read or an I/O error, or RE, is thrown.
+
+5)Read a text file as String:
+
+Ways to write a data into file:
+-------------------------------
+1) Using FileWriter: It is a simple way to erite character data to a file.
+
+2) Using BufferWriter with FileWriter: Provides buffering for FileWriter to improve performance.
+
+3) PrintWriter: Allows convenient methods to write formatted text to a file.
+
+4) Using Files.write(for java 7 and later): This class provides a static methods to write lines to a file.
+
+5) Using FileOutputStream class: It uses to write raw data to a file.
+                                FileWriter and BufferedReader classes are used to write only the text to a file,
+                                but the bunary data can be written by using FileOutputStream class.
+
+Deleting a file:
+-----------------
+1)We can delete a file using delete() method in the File class.
+
+2)We can delete a file using deleteIfExists() method in the Files class
+    which takes Paths.get() method which selects the file path.
+
+
+File permissions:
+-----------------
+to check file permission we use:
+    canRead(), canWrite() and canExecutable()
+    these methods returns true if having particular permission or else false
+
+to set permission we use:
+    setReadable(), setReadable() and setExecutable()
+    

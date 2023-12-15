@@ -1,0 +1,112 @@
+Java brings various Streams with its I/O packages that helps user to perform all the i/o operations.
+------------------------------------------------------------------------------------------------------
+These Streams supports all kind types of objects, data types, characters,files etc.
+------------------------------------------------------------------------------------
+
+ |--------|   InputStream   |---------------------|     OutputStearm   |----------------|
+ | source |---------------->|   Java Application  |------------------->|    Destination |
+ |--------|     READ        |---------------------|     Write          |----------------|
+
+ In java there are 3 common standard streams or default streams
+
+                            [System.in]
+                                |
+                                |(Keyboard)
+                                ^
+                             [Program]
+                screen           |          screen
+            ----------------------------------------
+            |                                       |
+            V                                       V
+        System.out                              System.err    
+
+Types of Streams:
+-----------------
+Depending on the type of operations, streams can be divided into two primary classes:
+
+1)Input Stream: These streams are used to read data that must be taken as an input from a source array or file or any device.
+                For eg. FileInputStream, BufferedInputStream, ByteArrayInputStream etc.
+            
+        [FileInputStream]   [ByteInputStream]   [PipedInputStream]  [ObjectInputStream]
+                |                   |                   |                   |
+                V                   V                   V                   V
+                -------------------------------------------------------------
+                                                |
+                                                |
+                                                V
+                                          [InputStream]
+                                                |
+                                                |
+                                                V
+        [DataInputStream]<------------[FilterInputStream]---------->[BufferedInputStream]
+                                                |
+                                                V
+                                     [PushBackInputStream]
+
+                                 (Various InputStream Classes)
+
+2)output Stream: These streams are used to write data as outputs into an array or file or any output peripheral
+                 for Eg: FileOutputStream, BufferedOutputStream, ByteArraysOutputStream etc.
+                
+        [FileOutputStream]   [ByteOutputStream]   [PipedOutputStream]  [ObjectOutputStream]
+                |                   |                   |                   |
+                V                   V                   V                   V
+                -------------------------------------------------------------
+                                                |
+                                                |
+                                                V
+                                          [OutputStream]
+                                                |
+                                                |
+                                                V
+        [DataOutputStream]<------------[FilterOutputStream]---------->[BufferedOutputStream]
+                                                |
+                                                V
+                                     [PushBackOutputStream]
+
+                                 (Various OutputStream Classes)
+
+Depending on the types of file, Streams can be divided into two primary classes
+    
+    [BufferedInputStream]<----------|(It is used for Buffered Input Stream)             |---------->[BufferedReader](It used to handle BIS)
+                                    |                                                   |
+    [DataInputStream]<--------------|(It Contains method for reading various Datatypes) |---------->[FileReader](Reads input fro File)
+                                    |                                                   |           
+    [FileInputStream]<--------------|(This is used to reads from a file)                |---------->[InputStreamReader](It translate byte to character)
+                                    |                                                   |
+    [InputStream]<------------------|(Abstract class Describes stream input)            |---------->[OutputStreamReader](It translate character to byte)
+                                ---------------        -----------------       ----------------     
+    [PrintStream]<----------| |                 |     |                 |     |                | |->[Reader](Both IS and Reader are abstract classes that define character)
+                            | |   ByteStream    |<----|     Streams     |---->| ChracterStream | |   
+    [BufferedOutputStream]<-| |                 |     |                 |     |                | |->[PrintWriter](Both PS and PW contains methods called print() and println())
+                                ---------------        -----------------       ----------------
+    [DataOutputStream]<-------------|(It is used for Buffered Input Stream)             |---------->[Writer](Abstract class defines character stream output)
+                                    |                                                   |
+    [FileOutputStream]<-------------|(This is used to reads from a file)                |---------->[BufferWriter](handle BOS)
+                                    |                                                   |
+    [OutputStearm]<-----------------|(Abstract class Describes stream input)            |---------->[FileWriter](Writes to the file)
+
+ByteStream:
+-----------
+This is used to process data byte by byte(8bits).
+Through it has many classes, FileInputStream and The FileOutputStream are the most popular ones.
+The FIS is used to read from the source and FOS is used to write to the Destination.
+These stream is available from 1.0 and it supports only 1 byte of memory thats why sun microsystem introduced CharacterStream
+it supports for 2 bytes of memory  which introduced after 1.1 version. 
+
+CharacterStream:
+----------------
+In Java, characters are stored using Unicode conversions. CharacterStream automatically
+allows us to Read/Write data character by character. Through it has many classes,
+The FileReader and FileWriter are character Streams used to read from the source and erite to the destination respectively.
+
+When to use CharacterStream over ByteStream:
+---------------------------------------------
+In Java, characters are stored using Unicode convertions. CharacterStream is usefull when we want to process
+text files. These txt files can be processed character by character. character size is typically 16 bits.
+
+When to use ByteStream over CharacterStream:
+----------------------------------------------
+Byte oriented reads byte by byte. A byte stream is suitable for processing raw data like binary files
+Like images, audio files etc.
+
